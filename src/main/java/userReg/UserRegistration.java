@@ -9,7 +9,10 @@ public class UserRegistration {
 	
 
 	public static void main(String[] args) {
-	// Registered User
+		/**
+		 * User Registration Program to get the First Name, Last Name, Mail, Phone Number, 
+		 * Password using Scanner 
+		 */
 	Scanner sc=new Scanner(System.in);
 	System.out.println ("Please enter First name:");
 	String fName=sc.nextLine();
@@ -51,7 +54,30 @@ public class UserRegistration {
 	            System.out.println("FirstName is not valid");
 	         }
 			return true;
-	        
+			
+	    }
+	 /**
+	  * Have to check my entered First Name is valid or not
+	  * If it is not valid mean, it throws a Message 
+	  * @param firstName
+	  * @return
+	  * @throws invalidInputException
+	  */
+	 
+	 	public boolean testValidFirstName(String fName) throws invalidInputException {
+	        try {
+	            if (!isValidFirstName(fName)) {
+	                throw new invalidInputException("Entered FirstName is Invalid\n" +
+	                        "First name starts with Capital Letter and has\n" +
+	                        "minimum 3 characters");
+	            } else {
+	                System.out.println("Entered FirstName is Valid");
+	            }
+	        } catch (invalidInputException e) {
+	            System.out.println("Exception is Occurred " + e);
+	            e.printStackTrace();
+	        }
+	        return isValidFirstName(fName);
 	    }
 	 
 	 public static boolean isValidLastName(String lName)
@@ -64,8 +90,7 @@ public class UserRegistration {
 	        Pattern pattern = Pattern.compile(regex);
 	        Matcher matcher = pattern.matcher(lName);
 	        
-	     
-	        
+	     	        
 	        if(matcher.find()) {
 	            System.out.println("Lastname is valid");
 	         } else {
@@ -74,6 +99,22 @@ public class UserRegistration {
 			return true;
 	        
 	    }
+	 
+	 	public boolean testValidLastName(String lName) throws invalidInputException {
+	        try {
+	            if (!isValidLastName(lName)) {
+	                throw new invalidInputException("Entered LastName is Invalid\n" +
+	                        "First name starts with Capital Letter with minimum 3 characters");
+	            } else {
+	                System.out.println("Entered LastName is Valid");
+	            }
+	        } catch (invalidInputException e) {
+	            System.out.println("Exception is Occurred " + e);
+	            e.printStackTrace();
+	        }
+	        return isValidLastName(lName);
+	    }
+	 
 	 
 	 public static boolean isValidEmail(String email)
 	    {
@@ -96,6 +137,21 @@ public class UserRegistration {
 	        
 	    }
 	 
+		public boolean testValidEmail(String email) throws invalidInputException {
+	        try {
+	            if (!isValidEmail(email)) {
+	                throw new invalidInputException("Entered Email is Invalid");
+	            } else {
+	                System.out.println("Entered Email is Valid");
+	            }
+	        } catch (invalidInputException e) {
+	            System.out.println("Exception is Occurred " + e);
+	            e.printStackTrace();
+	        }
+	        return isValidLastName(email);
+	    }
+	 
+	 
 	 public static boolean isValidPhoneNo(CharSequence phnNo)
     {
   
@@ -116,6 +172,21 @@ public class UserRegistration {
         
     }
 	 
+	 public boolean testValidPhoneNumber(String phnNo) throws invalidInputException {
+	        try {
+	            if (!isValidPhoneNo(phnNo)) {
+	                throw new invalidInputException("Entered Phone Number is Invalid");
+	            } else {
+	                System.out.println("Entered Phone Number is Valid");
+	            }
+	        } catch (invalidInputException e) {
+	            System.out.println("Exception is Occurred " + e);
+	            e.printStackTrace();
+	        }
+	        return isValidPhoneNo(phnNo);
+	    }
+	 
+	 
 	 public static boolean isValidPassword(String passWord)
 	    {
 	  
@@ -135,5 +206,20 @@ public class UserRegistration {
 	        return true;
 	        
 	    }
+	 
+	 public boolean testValidPassword(String password) throws invalidInputException {
+	        try {
+	            if (!isValidPassword(password)) {
+	                throw new invalidInputException("Entered password is Invalid, Password should contain atleast Special Char, Numeric, Capital Letter");
+	            } else {
+	                System.out.println("Entered Password is Valid");
+	            }
+	        } catch (invalidInputException e) {
+	            System.out.println("Exception is Occurred " + e);
+	            e.printStackTrace();
+	        }
+	        return isValidPassword(password);
+	    }
+	 
 	 
 }
